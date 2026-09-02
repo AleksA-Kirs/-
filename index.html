@@ -1,3 +1,4 @@
+`html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -66,9 +67,11 @@
             text-decoration: none;
             color: #333;
             background: white;
-            padding: 8px 11px;
+            padding: 8px 12px;
             border-radius: 6px;
             font-weight: bold;
+            min-width: 38px;
+            text-align: center;
         }
 
         .alphabet a:hover {
@@ -78,6 +81,7 @@
         .letter {
             font-size: 28px;
             margin-top: 35px;
+            margin-bottom: 15px;
             padding-bottom: 8px;
             border-bottom: 1px solid #ccc;
         }
@@ -87,7 +91,7 @@
             background: white;
             color: #222;
             text-decoration: none;
-            padding: 18px 20px;
+            padding: 17px 20px;
             margin: 10px 0;
             border-radius: 10px;
             font-size: 20px;
@@ -98,6 +102,15 @@
         .composer:hover {
             transform: translateY(-1px);
             background: #eee;
+        }
+
+        .composer.disabled {
+            cursor: default;
+        }
+
+        .composer.disabled:hover {
+            transform: none;
+            background: white;
         }
 
         .no-results {
@@ -140,11 +153,13 @@
 <div class="container">
 
     <header>
+
         <h1>Нотная библиотека</h1>
 
         <div class="subtitle">
             Произведения для кларнета
         </div>
+
     </header>
 
     <input
@@ -157,27 +172,173 @@
 
     <div class="alphabet">
 
+        <a href="#А">А</a>
+        <a href="#Б">Б</a>
         <a href="#В">В</a>
+        <a href="#Г">Г</a>
+        <a href="#Д">Д</a>
+        <a href="#К">К</a>
+        <a href="#М">М</a>
         <a href="#П">П</a>
+        <a href="#Р">Р</a>
+        <a href="#Ф">Ф</a>
+        <a href="#Ц">Ц</a>
+        <a href="#Ч">Ч</a>
+        <a href="#Ш">Ш</a>
 
     </div>
 
     <div id="composers">
 
+        <!-- А -->
+
+        <h2 class="lett
+
+
+er" id="А">А</h2>
+
+        <a class="composer disabled" href="#">
+            Андре Блох
+        </a>
+
+        <!-- Б -->
+
+        <h2 class="letter" id="Б">Б</h2>
+
+        <a class="composer disabled" href="#">
+            Иоганн Себастьян Бах
+        </a>
+
+        <a class="composer disabled" href="#">
+            Белла Ковач
+        </a>
+
+        <!-- В -->
+
         <h2 class="letter" id="В">В</h2>
 
         <a class="composer" href="weber/">
-            Вебер, Карл Мария фон
+            Карл Мария фон Вебер
         </a>
+
+        <a class="composer disabled" href="#">
+            Джон Уильямс
+        </a>
+
+        <!-- Г -->
+
+        <h2 class="letter" id="Г">Г</h2>
+
+        <a class="composer disabled" href="#">
+            Александр Константинович Глазунов
+        </a>
+
+        <a class="composer disabled" href="#">
+            Александр Фёдорович Гедике
+        </a>
+
+        <!-- Д -->
+
+        <h2 class="letter" id="Д">Д</h2>
+
+        <a class="composer disabled" href="#">
+            Борис Диков
+        </a>
+
+        <!-- К -->
+
+        <h2 class="letter" id="К">К</h2>
+
+        <a class="composer disabled" href="#">
+            Гиацинт Клозе
+        </a>
+
+        <a class="composer disabled" href="#">
+            Иван Костлан
+        </a>
+
+        <a class="composer disabled" href="#">
+            Франтишек Крамарж (Франц Кроммер)
+        </a>
+
+        <a class="composer disabled" href="#">
+            Бернхард Круссель
+        </a>
+
+        <!-- М -->
+
+        <h2 class="letter" id="М">М</h2>
+
+        <a class="composer disabled" href="#">
+            Мишель Мангани
+        </a>
+
+        <a class="composer disabled" href="#">
+            Яков Медынь
+        </a>
+
+        <a class="composer disabled" href="#">
+            Константин Мострас
+        </a>
+
+        <!-- П -->
 
         <h2 class="letter" id="П">П</h2>
 
-        <a class="composer" href="#">
-            Пуленк, Франсис
+        <a class="composer disabled" href="#">
+            Франсис Пуленк
         </a>
 
-        <a class="composer" href="#">
-            Прокофьев, Сергей
+        <!-- Р -->
+
+        <h2 class="letter" id="Р">Р</h2>
+
+        <a class="composer disabled" href="#">
+            Николай Раков
+        </a>
+
+        <a class="composer disabled" href="#">
+            Сергей Васильевич Рахманинов
+        </a>
+
+        <a class="composer disabled" href="#">
+            Николай Андреевич Римский-Корсаков
+        </a>
+
+        <!-- Ф -->
+
+        <h2 class="letter" id="Ф">Ф</h2>
+
+        <a class="composer disabled" href="#">
+            Фаустин Жан-Жан
+        </a>
+
+        <a class="composer disabled" href="#">
+            Фердинанд Давид
+        </a>
+
+        <!-- Ц -->
+
+        <h2 class="letter" id="Ц">Ц</h2>
+
+        <a class="composer disabled" href="#">
+            Александр Цфасман
+        </a>
+
+        <!-- Ч -->
+
+        <h2 class="letter" id="Ч">Ч</h2>
+
+        <a class="composer disabled" href="#">
+            Пётр Ильич Чайковский
+        </a>
+
+        <!-- Ш -->
+
+        <h2 class="letter" id="Ш">Ш</h2>
+
+        <a class="composer disabled" href="#">
+            Дмитрий Дмитриевич Шостакович
         </a>
 
     </div>
@@ -198,10 +359,7 @@ function searchComposers() {
 
     let search = document
         .getElementById("search")
-        .
-
-
-value
+        .value
         .toLowerCase()
         .trim();
 
