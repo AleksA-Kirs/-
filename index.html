@@ -3,94 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Нотная библиотека</title>
+
+    <title>Нотная библиотека для кларнета</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
             background: #f7f5f0;
             color: #222;
         }
 
-        h1 {
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        header {
             text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h1 {
             font-size: 42px;
-            margin-bottom: 10px;
+            margin: 0 0 12px;
         }
 
         .subtitle {
-            text-align: center;
             color: #666;
-            margin-bottom: 40px;
+            font-size: 18px;
         }
 
         .search {
             width: 100%;
-            box-sizing: border-box;
-            padding: 15px;
+            padding: 16px 18px;
             font-size: 18px;
             border: 1px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            border-radius: 10px;
+            background: white;
+            outline: none;
+            margin-bottom: 25px;
         }
 
-        h2 {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
+        .search:focus {
+            border-color: #888;
+        }
+
+        .alphabet {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .alphabet a {
+            text-decoration: none;
+            color: #333;
+            background: white;
+            padding: 8px 11px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .alphabet a:hover {
+            background: #e9e7e2;
+        }
+
+        .letter {
+            font-size: 28px;
             margin-top: 35px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ccc;
         }
 
         .composer {
             display: block;
             background: white;
-            padding: 18px;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-decoration: none;
             color: #222;
+            text-decoration: none;
+            padding: 18px 20px;
+            margin: 10px 0;
+            border-radius: 10px;
             font-size: 20px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 7px rgba(0,0,0,0.07);
+            transition: 0.15s;
         }
 
         .composer:hover {
+            transform: translateY(-1px);
             background: #eee;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #777;
+            padding: 30px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        max-width: 600px {
+            .container {
+                padding: 25px 15px 45px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .composer {
+                font-size: 18px;
+                padding: 16px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Нотная библиотека</h1>
+<div class="container">
 
-    <div class="subtitle">
-        Каталог произведений композиторов
-    </div>
+    <header>
+        <h1>Нотная библиотека</h1>
+
+        <div class="subtitle">
+            Произведения для кларнета
+        </div>
+    </header>
 
     <input
         class="search"
         type="text"
+        id="search"
         placeholder="Поиск композитора..."
         onkeyup="searchComposers()"
-        id="search"
     >
+
+    <div class="alphabet">
+
+        <a href="#В">В</a>
+        <a href="#П">П</a>
+
+    </div>
 
     <div id="composers">
 
-        <h2>В</h2>
+        <h2 class="letter" id="В">В</h2>
 
-        <a class="composer" href="weber">
-            Вебер, Карл Мариа
+        <a class="composer" href="weber/">
+            Вебер, Карл Мария фон
         </a>
 
-        <a class="composer" href="#">
-            Вивальди, Антонио
-        </a>
-
-
-        <h2>П</h2>
+        <h2 class="letter" id="П">П</h2>
 
         <a class="composer" href="#">
             Пуленк, Франсис
@@ -102,26 +182,55 @@
 
     </div>
 
-    <script>
-        function searchComposers() {
-            let search = document
-                .getElementById("search")
-                .value
-                .toLowerCase();
+    <div class="no-results" id="noResults">
+        Композитор не найден.
+    </div>
 
-            let composers = document.querySelectorAll(".composer");
+    <footer>
+        Нотная библиотека для кларнета
+    </footer>
 
-            composers.forEach(function(composer) {
-                let name = composer.textContent.toLowerCase();
+</div>
 
-                if (name.includes(search)) {
-                    composer.style.display = "block";
-                } else {
-                    composer.style.display = "none";
-                }
-            });
+<script>
+
+function searchComposers() {
+
+    let search = document
+        .getElementById("search")
+        .
+
+
+value
+        .toLowerCase()
+        .trim();
+
+    let composers = document.querySelectorAll(".composer");
+
+    let found = false;
+
+    composers.forEach(function(composer) {
+
+        let name = composer.textContent.toLowerCase();
+
+        if (name.includes(search)) {
+
+            composer.style.display = "block";
+            found = true;
+
+        } else {
+
+            composer.style.display = "none";
+
         }
-    </script>
+
+    });
+
+    document.getElementById("noResults").style.display =
+        found ? "none" : "block";
+}
+
+</script>
 
 </body>
 </html>
