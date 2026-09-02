@@ -357,7 +357,7 @@ function searchComposers() {
 
     let found = false;
 
-    // Если поиск пустой — показываем весь список
+    // Если поле поиска пустое — показываем всё
     if (search === "") {
 
         composers.forEach(function(composer) {
@@ -373,27 +373,31 @@ function searchComposers() {
         return;
     }
 
-    // Сначала скрываем все буквы
+    // Скрываем все буквы
     letters.forEach(function(letter) {
         letter.style.display = "none";
     });
 
     composers.forEach(function(composer) {
 
-        // Получаем фамилию — всё до первой запятой
         let name = composer.textContent
             .toLowerCase()
             .trim();
 
-        let surname = name.split(",")[0].trim();
+        // Разбиваем имя композитора на отдельные слова
+        let words = name.split(/[\s,()\-]+/);
 
-        // Проверяем начало фамилии
-        if (surname.startsWith(search)) {
+        // Проверяем, начинается ли какое-либо слово с запроса
+        let matches = words.some(function(word) {
+            return word.startsWith(search);
+        });
+
+        if (matches) {
 
             composer.style.display = "block";
             found = true;
 
-            // Находим заголовок буквы над композитором
+            // Находим ближайшую букву сверху
             let letter = composer.previousElementSibling;
 
             while (letter && !letter.classList.contains("letter")) {
@@ -412,13 +416,12 @@ function searchComposers() {
 
     });
 
-    // Если ничего не нашли
+    // Если ничего не найдено
     document.getElementById("noResults").style.display =
         found ? "none" : "block";
 }
 
 </script>
-
-
+    
 </body>
 </html>
