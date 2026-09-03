@@ -62,15 +62,52 @@
                 display: block;
                 background: white;
                 color: #222;
-                text-decoration: none;
                 padding: 20px;
                 margin: 12px 0;
                 border-radius: 10px;
                 font-size: 19px;
                 box-shadow: 0 2px 7px rgba(0,0,0,0.07);
-                transition: 0.15s;
+                transition: 0.2s;
             }
-    
+            
+            .work summary {
+                cursor: pointer;
+                font-weight: 600;
+                list-style: none;
+                position: relative;
+                padding-right: 30px;
+            }
+            
+            .work summary::-webkit-details-marker {
+                display: none;
+            }
+            
+            .work summary::after {
+                content: "⌄";
+                position: absolute;
+                right: 5px;
+                font-size: 25px;
+                color: #888;
+                transition: 0.2s;
+            }
+            
+            .work[open] summary::after {
+                content: "⌃";
+            }
+            
+            .download {
+                display: block;
+                margin-top: 18px;
+                padding-top: 15px;
+                border-top: 1px solid #eee;
+                color: #666;
+                text-decoration: none;
+                font-size: 16px;
+            }
+            
+            .download:hover {
+                color: #222;
+            }
             .work:hover {
                 background: #eee;
                 transform: translateY(-1px);
