@@ -83,19 +83,19 @@
             }
             
             .work summary::after {
-                content: "⏩";
+                content: "⏏";
                 position: absolute;
                 right: 8px;
                 top: 50%;
                 font-size: 32px;
                 font-weight: 300;
                 color: #888;
-                transform: translateY(-54%) rotate(90deg);
+                transform: translateY(-54%) rotate(180deg);
                 transition: 0.2s;
             }
             
             .work[open] summary::after {
-                transform: translateY(-46%) rotate(-90deg);
+                transform: translateY(-46%) rotate(0deg);
             }
             
             .download {
