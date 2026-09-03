@@ -83,16 +83,20 @@
             }
             
             .work summary::after {
-                content: "⌄";
+                content: "";
                 position: absolute;
-                right: 5px;
-                font-size: 25px;
-                color: #888;
+                right: 8px;
+                top: 50%;
+                width: 14px;
+                height: 14px;
+                border-right: 3px solid #777;
+                border-bottom: 3px solid #777;
+                transform: translateY(-70%) rotate(45deg);
                 transition: 0.2s;
             }
             
             .work[open] summary::after {
-                content: "⌃";
+                transform: translateY(-30%) rotate(225deg);
             }
             
             .download {
@@ -107,6 +111,10 @@
             
             .download:hover {
                 color: #222;
+            }
+            .work:hover {
+                background: #eee;
+                transform: translateY(-1px);
             }
            
             .download {
