@@ -1,0 +1,55 @@
+        <!-- П -->
+
+        <h2 class="letter" id="П">П</h2>
+
+        <a class="composer" href="#">
+            Пуленк, Франциск
+        </a>
+
+        <!-- Р -->
+
+        <h2 class="letter" id="Р">Р</h2>
+
+        <a class="composer" href="#">
+            Раков, Николай
+        </a>
+
+        <a class="composer" href="#">
+            Рахманинов, Сергей Васильевич
+        </a>
+
+        <a class="composer" href="#">
+            Римский-Корсаков, Николай Андреевич
+        </a>
+
+        <!-- У -->
+
+        <h2 class="letter" id="У">У</h2>
+
+        <a class="composer" href="#">
+            Уильямс, Джон
+        </a>
+
+        <!-- Ц -->
+
+        <h2 class="letter" id="Ц">Ц</h2>
+
+        <a class="composer" href="#">
+            Цфасман, Александр
+        </a>
+
+        <!-- Ч -->
+
+        <h2 class="letter" id="Ч">Ч</h2>
+
+        <a class="composer" href="#">
+            Чайковский, Пётр Ильич
+        </a>
+
+        <!-- Ш -->
+
+        <h2 class="letter" id="Ш">Ш</h2>
+
+        <a class="composer" href="#">
+            Шостакович, Дмитрий Дмитриевич
+        </a>
