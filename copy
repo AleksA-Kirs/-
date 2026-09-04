@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>Карл Мария фон Вебер — Нотная библиотека</title>
+        <title>Фаустин Маурис Жан-Жан — Нотная библиотека</title>
     
         <style>
             * {
@@ -163,7 +163,7 @@
     
         <header>
     
-            <h1>Карл Мария фон Вебер</h1>
+            <h1>Фаустин Маурис Жан-Жан</h1>
     
             <div class="subtitle">
                 Произведения для кларнета
@@ -176,39 +176,15 @@
          <details class="work">
     <summary>Концерт для кларнета №1</summary>
 
-    <a class="download" href="Weber Concerto 1.pdf" download>
+    <a class="download" href="Guisganderie.pdf" download>
         🎼 Скачать сольную партию
     </a>
 
-    <a class="download" href="Concerto1pn.pdf" download>
+    <a class="download" href="Gisganderiapn.pdf" download>
         🎹 Скачать клавир
     </a>
 </details>
 
- <details class="work">
-    <summary>Концерт для кларнета №2</summary>
-
-    <a class="download" href="Concerto 2.pdf" download>
-        🎼 Скачать сольную партию
-    </a>
-
-    <a class="download" href="Concerto2pn.pdf" download>
-        🎹 Скачать клавир
-    </a>
-</details>
-
- <details class="work">
-    <summary>Концертино</summary>
-
-    <a class="download" href="Concertino .pdf" download>
-        🎼 Скачать сольную партию
-    </a>
-
-    <a class="download" href="Concertinopn.pdf" download>
-        🎹 Скачать клавир
-    </a>
-</details>
-    
         <footer>
             Нотная библиотека для кларнета не Тараканова, а Жукова.
         </footer>
