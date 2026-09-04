@@ -16,7 +16,7 @@ async function loadAllComposers() {
             continue;
         }
 
-        const page = "../" + item.name + "/";
+        const page = new URL("../" + item.name + "/",window.location.href).href;
 
         try {
 
