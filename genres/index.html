@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>По жанру — Нотная библиотека</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f5f0;
+            color: #222;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 35px 20px 60px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 35px;
+            color: #555;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back:hover {
+            color: #000;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 12px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 17px;
+        }
+
+        h2 {
+            font-size: 27px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .genre {
+            display: block;
+            background: white;
+            color: #222;
+            text-decoration: none;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 9px;
+            font-size: 19px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+        }
+
+        .genre:hover {
+            background: #eee;
+        }
+
+        .work {
+            display: block;
+            background: white;
+            color: #222;
+            padding: 18px;
+            margin: 12px 0;
+            border-radius: 9px;
+            font-size: 17px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+        }
+
+        .work-title {
+            font-weight: 500;
+        }
+
+        .composer {
+            display: block;
+            margin-top: 5px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .download {
+            display: block;
+            margin-top: 12px;
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .download:hover {
+            color: #222;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        max-width: 600px {
+            h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a class="back" href="../">
+        ← Назад к композиторам
+    </a>
+
+    <header>
+        <h1>По жанру</h1>
+
+        <div class="subtitle">
+            Произведения для кларнета
+        </div>
+    </header>
+
+    <h2>Концерты</h2>
+
+    <div class="work">
+        <div class="work-title">
+            Концерт для кларнета №1
+        </div>
+
+        <div class="composer">
+            Вебер, Карл Мария
+        </div>
+
+        <a class="download" href="../weber/Weber Concerto 1.pdf" download>
+            🎼 Скачать сольную партию
+        </a>
+
+        <a class="download" href="../weber/Concerto1pn.pdf" download>
+            🎹 Скачать клавир
+        </a>
+    </div>
+
+    <div class="work">
+        <div class="work-title">
+            Концерт для кларнета №2
+        </div>
+
+        <div class="composer">
+            Вебер, Карл Мария
+        </div>
+
+        <a class="download" href="../weber/Concerto 2.pdf" download>
+            🎼 Скачать сольную партию
+        </a>
+
+        <a class="download" href="../weber/Concerto2pn.pdf" download>
+            🎹 Скачать клавир
+        </a>
+    </div>
+
+    <div class="work">
+        <div class="work-title">
+            Концертино
+        </div>
+
+        <div class="composer">
+            Вебер, Карл Мария
+        </div>
+
+        <a class="download" href="../webe
+
+
+r/Concertino .pdf" download>
+            🎼 Скачать сольную партию
+        </a>
+
+        <a class="download" href="../weber/Concertinopn.pdf" download>
+            🎹 Скачать клавир
+        </a>
+    </div>
+
+    <footer>
+        Нотная библиотека для кларнета не Тараканова, а Жукова.
+    </footer>
+
+</div>
+
+</body>
+</html>
