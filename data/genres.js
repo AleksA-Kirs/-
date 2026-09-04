@@ -5,6 +5,8 @@ async function loadAllComposers() {
     );
 
     const items = await response.json();
+    
+    console.log("Ответ GitHub API:", items);
 
     const composers = [];
 
