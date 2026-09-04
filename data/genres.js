@@ -1,7 +1,7 @@
 async function loadAllComposers() {
 
     const response = await fetch(
-        "https://api.github.com/repos/aleksa-kirs/music-library/contents/"
+        "https://api.github.com/repos/aleksa-kirs/-/contents/"
     );
 
     const items = await response.json();
