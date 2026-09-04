@@ -32,10 +32,6 @@
             font-size: 16px;
         }
 
-        .back:hover {
-            color: #000;
-        }
-
         header {
             text-align: center;
             margin-bottom: 40px;
@@ -49,29 +45,6 @@
         .subtitle {
             color: #777;
             font-size: 17px;
-        }
-
-        h2 {
-            font-size: 27px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-        .genre {
-            display: block;
-            background: white;
-            color: #222;
-            text-decoration: none;
-            padding: 18px;
-            margin: 12px 0;
-            border-radius: 9px;
-            font-size: 19px;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.06);
-        }
-
-        .genre:hover {
-            background: #eee;
         }
 
         .work {
@@ -108,6 +81,12 @@
             color: #222;
         }
 
+        .message {
+            text-align: center;
+            color: #888;
+            margin-top: 30px;
+        }
+
         footer {
             text-align: center;
             margin-top: 60px;
@@ -115,13 +94,9 @@
             font-size: 14px;
         }
 
-        max-width: 600px {
+        @media (max-width: 600px) {
             h1 {
                 font-size: 30px;
-            }
-
-            h2 {
-                font-size: 24px;
             }
         }
     </style>
@@ -136,70 +111,15 @@
     </a>
 
     <header>
-        <h1>По жанру</h1>
+        <h1>Концерты</h1>
 
         <div class="subtitle">
             Произведения для кларнета
         </div>
     </header>
 
-    <h2>Концерты</h2>
-
-    <div class="work">
-        <div class="work-title">
-            Концерт для кларнета №1
-        </div>
-
-        <div class="composer">
-            Вебер, Карл Мария
-        </div>
-
-        <a class="download" href="../weber/Weber Concerto 1.pdf" download>
-            🎼 Скачать сольную партию
-        </a>
-
-        <a class="download" href="../weber/Concerto1pn.pdf" download>
-            🎹 Скачать клавир
-        </a>
-    </div>
-
-    <div class="work">
-        <div class="work-title">
-            Концерт для кларнета №2
-        </div>
-
-        <div class="composer">
-            Вебер, Карл Мария
-        </div>
-
-        <a class="download" href="../weber/Concerto 2.pdf" download>
-            🎼 Скачать сольную партию
-        </a>
-
-        <a class="download" href="../weber/Concerto2pn.pdf" download>
-            🎹 Скачать клавир
-        </a>
-    </div>
-
-    <div class="work">
-        <div class="work-title">
-            Концертино
-        </div>
-
-        <div class="composer">
-            Вебер, Карл Мария
-        </div>
-
-        <a class="download" href="../webe
-
-
-r/Concertino .pdf" download>
-            🎼 Скачать сольную партию
-        </a>
-
-        <a class="download" href="../weber/Concertinopn.pdf" download>
-            🎹 Скачать клавир
-        </a>
+    <div id="works">
+        <div class="message">Загрузка произведений...</div>
     </div>
 
     <footer>
@@ -207,6 +127,76 @@ r/Concertino .pdf" download>
     </footer>
 
 </div>
+
+<script src="../data/genres.js"></script>
+
+<script>
+
+const composers = [
+    {
+        name: "Вебер, Карл Мария",
+        page: "../weber/"
+    }
+];
+
+async function showConcerts() {
+
+    const container = document.getElementById("works");
+
+    container.innerHTML = "";
+
+    let found = false;
+
+    for (const composer of composers) {
+
+        const works = await loadComposerWorks(composer.page);
+
+        works.forEach(function(work) {
+
+            if (work.genre !== "concert") {
+                return;
+            }
+
+            found = true;
+
+            const block = document.createElement("div");
+            block.className = "work";
+
+            block.innerHTML = `
+                <div class="work-title">
+                    ${work.title}
+                </div>
+
+                <div class="composer">
+                    ${composer.name}
+                </div>
+            `;
+
+            work.files.forEach(function(file) {
+
+                const link = document.createElement("a");
+
+                link.className = "download";
+                link.href = file.href;
+                link.download = "";
+                link.textContent = file.text;
+
+                block.appendChild(link);
+            });
+
+            container.appendChild(block);
+        });
+    }
+
+    if (!found) {
+        container.innerHTML =
+            '<div class="message">Пока произведений этого жанра нет.</div>';
+    }
+}
+
+showConcerts();
+
+</script>
 
 </body>
 </html>
