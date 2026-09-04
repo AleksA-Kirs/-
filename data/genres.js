@@ -6,8 +6,13 @@ async function loadAllComposers() {
 
     const items = await response.json();
     
-    console.log("Ответ GitHub API:", items);
-
+    if (!Array.isArray(items)) {
+        throw new Error(
+            "GitHub API вернул не список: " +
+            JSON.stringify(items)
+        );
+    }
+    
     const composers = [];
 
     for (const item of items) {
