@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>По жанру — Нотная библиотека</title>
+    <title>Концерты — Нотная библиотека</title>
 
     <style>
         * {
@@ -30,6 +30,10 @@
             color: #555;
             text-decoration: none;
             font-size: 16px;
+        }
+
+        .back:hover {
+            color: #000;
         }
 
         header {
@@ -95,8 +99,17 @@
         }
 
         @media (max-width: 600px) {
+
+            .container {
+                padding: 25px 15px 45px;
+            }
+
             h1 {
                 font-size: 30px;
+            }
+
+            .work {
+                font-size: 16px;
             }
         }
     </style>
@@ -111,15 +124,19 @@
     </a>
 
     <header>
+
         <h1>Концерты</h1>
 
         <div class="subtitle">
             Произведения для кларнета
         </div>
+
     </header>
 
     <div id="works">
-        <div class="message">Загрузка произведений...</div>
+        <div class="message">
+            Загрузка произведений...
+        </div>
     </div>
 
     <footer>
@@ -132,65 +149,84 @@
 
 <script>
 
-const composers = [
-    {
-        name: "Вебер, Карл Мария",
-        page: "../weber/"
-    }
-];
-
 async function showConcerts() {
 
     const container = document.getElementById("works");
 
-    container.innerHTML = "";
+    try {
 
-    let found = false;
+        const composers = await loadAllComposers();
 
-    for (const composer of composers) {
+        let found = false;
 
-        const works = await loadComposerWorks(composer.page);
+        container.innerHTML = "";
 
-        works.forEach(function(work) {
+        composers.forEach(function(composer) {
 
-            if (work.genre !== "concert") {
-                return;
-            }
+            composer.works.forEach(function(work) {
 
-            found = true;
+                if (work.genre !== "concert") {
+                    return;
+                }
 
-            const block = document.createElement("div");
-            block.className = "work";
+                found = true;
 
-            block.innerHTML = `
-                <div class="work-title">
-                    ${work.title}
-                </div>
+                const block = document.createElement("div");
 
-                <div class="composer">
-                    ${composer.name}
-                </div>
-            `;
+                block.className = "work";
 
-            work.files.forEach(function(file) {
+                const title = document.createElement("div");
 
-                const link = document.createElement("a");
+                title.className = "work-title";
 
-                link.className = "download";
-                link.href = file.href;
-                link.download = "";
-                link.textContent = file.text;
+                title.textContent = work.title;
 
-                block.appendChild(link);
+                block.appendChild(title);
+
+                const composerName = document.createElement("div");
+
+                composerName.className = "composer";
+
+                composerName.textContent = composer.name;
+
+                block.appendChild(composerName);
+
+                work.files.forEach(function(file) {
+
+                    const link = document.createElement("a");
+
+                    link.className = "download";
+
+                    link.href = file.href;
+
+                    link.download = "";
+
+                    link.textContent = file.text;
+
+                    block.appendChild(link);
+
+                });
+
+                container.appendChild(block);
+
             });
 
-            container.appendChild(block);
         });
-    }
 
-    if (!found) {
+        if (!found) {
+
+            container.innerHTML =
+                '<div class="message">Пока произведений этого жанра нет.</div>';
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
         container.innerHTML =
-            '<div class="message">Пока произведений этого жанра нет.</div>';
+            '<div class="message">Не удалось загрузить произведения.</div>';
+
     }
 }
 
