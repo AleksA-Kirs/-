@@ -6,12 +6,7 @@ async function loadAllComposers() {
 
     const items = await response.json();
     
-    if (!Array.isArray(items)) {
-        throw new Error(
-            "GitHub API вернул не список: " +
-            JSON.stringify(items)
-        );
-    }
+    console.log("Найденные папки:", items);
     
     const composers = [];
 
