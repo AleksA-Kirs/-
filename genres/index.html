@@ -225,7 +225,7 @@ async function showConcerts() {
         console.error(error);
 
         container.innerHTML =
-            '<div class="message">Не удалось загрузить произведения.</div>';
+            '<div class="message">Ошибка: ' + error.message + '</div>';
 
     }
 }
