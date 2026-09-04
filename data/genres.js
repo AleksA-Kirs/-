@@ -90,3 +90,4 @@ async function loadAllComposers() {
 
     return composers;
 }
+console.log("genres.js загружен");
