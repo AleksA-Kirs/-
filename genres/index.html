@@ -125,7 +125,7 @@
 
     <header>
 
-        <h1>Концерты</h1>
+        <h1 id="genreTitle">Концерты</h1>
 
         <div class="subtitle">
             Произведения для кларнета
@@ -152,6 +152,16 @@
 async function showConcerts() {
 
     const genre = new URLSearchParams(window.location.search).get("genre") || "concert";
+
+    const genreNames = {
+    concert: "Концерты",
+    sonata: "Сонаты",
+    etude: "Этюды",
+    piece: "Пьесы"
+    };
+
+document.getElementById("genreTitle").textContent =
+    genreNames[genre] || "Произведения";
 
     const container = document.getElementById("works");
 
