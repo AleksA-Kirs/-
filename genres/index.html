@@ -163,14 +163,14 @@ async function showConcerts() {
     const genre = new URLSearchParams(window.location.search).get("genre") || "concert";
 
     const genreNames = {
-    concert: "Концерты",
-    sonata: "Сонаты",
-    etude: "Этюды",
-    piece: "Пьесы"
+        concert: "Концерты",
+        sonata: "Сонаты",
+        etude: "Этюды",
+        piece: "Пьесы"
     };
 
-document.getElementById("genreTitle").textContent =
-    genreNames[genre] || "Произведения";
+    document.getElementById("genreTitle").textContent =
+        genreNames[genre] || "Произведения";
 
     const container = document.getElementById("works");
 
@@ -182,55 +182,127 @@ document.getElementById("genreTitle").textContent =
 
         container.innerHTML = "";
 
-        composers.forEach(function(composer) {
+        // ПЬЕСЫ — оставляем прежний порядок
+        if (genre === "piece") {
 
-            composer.works.forEach(function(work) {
+            composers.forEach(function(composer) {
 
-                if (work.genre !== genre) return;
+                composer.works.forEach(function(work) {
 
-                found = true;
+                    if (work.genre !== genre) return;
 
-                const block = document.createElement("div");
+                    found = true;
 
-                block.className = "work";
+                    const block = document.createElement("div");
 
-                const title = document.createElement("div");
+                    block.className = "work";
 
-                title.className = "work-title";
+                    const title = document.createElement("div");
 
-                title.textContent = work.title;
+                    title.className = "work-title";
 
-                block.appendChild(title);
+                    title.textContent = work.title;
 
-                const composerName = document.createElement("div");
+                    block.appendChild(title);
 
-                composerName.className = "composer";
+                    const composerName = document.createElement("div");
 
-                composerName.textContent = composer.name;
+                    composerName.className = "composer";
 
-                block.appendChild(composerName);
+                    composerName.textContent = composer.name;
 
-                work.files.forEach(function(file) {
+                    block.appendChild(composerName);
 
-                    const link = document.createElement("a");
+                    work.files.forEach(function(file) {
 
-                    link.className = "download";
+                        const link = document.createElement("a");
 
-                    link.href = file.href;
+                        link.className = "download";
 
-                    link.download = "";
+                        link.href = file.href;
 
-                    link.textContent = file.text;
+                        link.download = "";
 
-                    block.appendChild(link);
+                        link.textContent = file.text;
+
+                        block.appendChild(link);
+
+                    });
+
+                    container.appendChild(block);
 
                 });
 
-                container.appendChild(block);
+            });
+
+        }
+
+        // КОНЦЕРТЫ, СОНАТЫ, ЭТЮДЫ — сначала композитор
+        else {
+
+            composers.forEach(function(composer) {
+
+                const composerWorks = composer.works.filter(function(work) {
+
+                    return work.genre === genre;
+
+                });
+
+                if (composerWorks.length === 0) return;
+
+                found = true;
+
+                const composerBlock = document.createElement("div");
+
+                composerBlock.className = "composer-group";
+
+                const composerTitle = document.createElement("h2");
+
+                composerTitle.className = "composer-title";
+
+                composerTitle.textContent = composer.name;
+
+                composerBlock.appendChild(composerTitle);
+
+                composerWorks.forEach(function(work) {
+
+                    const block = document.createElement("div");
+
+                    block.className = "work";
+
+                    const title = document.createElement("div");
+
+                    title.className = "work-title";
+
+                    title.textContent = work.title;
+
+                    block.appendChild(title);
+
+                    work.files.forEach(function(file) {
+
+                        const link = document.createElement("a");
+
+                        link.className = "download";
+
+                        link.href = file.href;
+
+                        link.download = "";
+
+                        link.textContent = file.text;
+
+                        block.appendChild(link);
+
+                    });
+
+                    composerBlock.appendChild(block);
+
+                });
+
+                container.appendChild(composerBlock);
 
             });
 
-        });
+        }
 
         if (!found) {
 
@@ -247,6 +319,7 @@ document.getElementById("genreTitle").textContent =
             '<div class="message">Ошибка: ' + error.message + '</div>';
 
     }
+
 }
 
 showConcerts();
