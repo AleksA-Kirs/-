@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>Фаустин Маурис Жан-Жан — Нотная библиотека</title>
+        <title>Александр Гедике — Нотная библиотека</title>
     
         <style>
             * {
@@ -163,7 +163,7 @@
     
         <header>
     
-            <h1>Фаустин Маурис Жан-Жан</h1>
+            <h1>Александр Гедике</h1>
     
             <div class="subtitle">
                 Произведения для кларнета
@@ -173,16 +173,16 @@
     
         <h2>Произведения</h2>
     
-         <details class="work">
-    <summary>Концерт для кларнета №1</summary>
+         <details class="work" data-genre="etude">
+    <summary>Этюд для кларнета (посв. Розанову)</summary>
 
-    <a class="download" href="Guisganderie.pdf" download>
+    <a class="download" href="Gedike etude.pdf" download>
         🎼 Скачать сольную партию
     </a>
 
-    <a class="download" href="Gisganderiapn.pdf" download>
-        🎹 Скачать клавир
-    </a>
+
+
+
 </details>
 
         <footer>
