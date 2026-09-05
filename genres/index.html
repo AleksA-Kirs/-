@@ -151,6 +151,8 @@
 
 async function showConcerts() {
 
+    const genre = new URLSearchParams(window.location.search).get("genre") || "concert";
+
     const container = document.getElementById("works");
 
     try {
@@ -165,8 +167,7 @@ async function showConcerts() {
 
             composer.works.forEach(function(work) {
 
-                if (work.genre !== "concert") {
-                    return;
+                if (work.genre !== genre) return;
                 }
 
                 found = true;
